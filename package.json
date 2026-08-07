@@ -1,0 +1,29 @@
+{
+  "name": "what-have-i-done",
+  "version": "1.0.0",
+  "description": "Completion-integrity skills for AI agents: reconstruct what was actually asked, ledger every step against concrete evidence, review it adversarially, and loop until the work genuinely matches - before claiming anything is done.",
+  "type": "module",
+  "main": ".opencode/plugins/what-have-i-done.js",
+  "keywords": [
+    "pi-package",
+    "skills",
+    "self-review",
+    "verification",
+    "completion",
+    "evidence",
+    "quality-gate"
+  ],
+  "license": "MIT",
+  "author": "Jinu Prakash",
+  "scripts": {
+    "test": "./tests/run-all.sh"
+  },
+  "pi": {
+    "extensions": [
+      "./.pi/extensions/what-have-i-done.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  }
+}

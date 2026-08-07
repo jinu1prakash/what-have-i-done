@@ -1,0 +1,18 @@
+{
+  "name": "what-have-i-done",
+  "description": "Completion-integrity skills: before claiming any task or to-do list is complete, reconstruct what was actually asked, ledger every step against concrete evidence, review it adversarially, and loop until the work genuinely matches. Works for code, documents, data, research, ops, and design alike.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jinu Prakash"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "self-review",
+    "verification",
+    "completion",
+    "evidence",
+    "honesty",
+    "quality-gate"
+  ]
+}

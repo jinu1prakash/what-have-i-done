@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# SessionStart hook for the what-have-i-done plugin.
+#
+# Reads skills/using-what-have-i-done/SKILL.md and prints it as a session-start
+# context injection. That injected skill is the entire integration: without it
+# the skill files sit on disk and are never invoked.
+#
+# Zero dependencies -- pure bash string handling and printf. Do not reintroduce
+# python/jq/node here; the hook must run on a bare system.
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+BOOTSTRAP_SKILL="${PLUGIN_ROOT}/skills/using-what-have-i-done/SKILL.md"
+
+# A missing bootstrap skill is a broken install, not a reason to break the
+# session. Emit nothing and let the harness carry on.
+[ -f "$BOOTSTRAP_SKILL" ] || exit 0
+
+bootstrap_content="$(cat "$BOOTSTRAP_SKILL")"
+
+# Escape a string for embedding in a JSON string literal. Each ${s//old/new} is
+# a single C-level pass, so this stays fast on multi-KB skill files.
+escape_for_json() {
+    local s="$1"
+    s="${s//\\/\\\\}"
+    s="${s//\"/\\\"}"
+    s="${s//$'\n'/\\n}"
+    s="${s//$'\r'/\\r}"
+    s="${s//$'\t'/\\t}"
+    printf '%s' "$s"
+}
+
+bootstrap_escaped="$(escape_for_json "$bootstrap_content")"
+
+session_context="<EXTREMELY_IMPORTANT>\nYou have the what-have-i-done completion-integrity skills.\n\n**Below is the full content of your 'using-what-have-i-done' skill - your introduction to this skill library. It is ALREADY LOADED; do not load it again. For every other skill, use your harness's skill-loading mechanism:**\n\n${bootstrap_escaped}\n</EXTREMELY_IMPORTANT>"
+
+# The JSON field name and nesting differ per harness. Emitting the wrong field
+# means the bootstrap silently never injects; emitting two means it injects
+# twice (Claude Code reads both `additional_context` and `hookSpecificOutput`
+# without de-duplicating). Emit exactly one.
+#
+# printf rather than a heredoc: bash 5.3+ can hang on heredocs in this position.
+if [ -n "${CURSOR_PLUGIN_ROOT:-}" ]; then
+  # Cursor sets CURSOR_PLUGIN_ROOT, and may also set CLAUDE_PLUGIN_ROOT, so this
+  # branch must come first.
+  printf '{\n  "additional_context": "%s"\n}\n' "$session_context"
+elif [ -n "${CLAUDE_PLUGIN_ROOT:-}" ] && [ -z "${COPILOT_CLI:-}" ]; then
+  # Claude Code sets CLAUDE_PLUGIN_ROOT without COPILOT_CLI.
+  printf '{\n  "hookSpecificOutput": {\n    "hookEventName": "SessionStart",\n    "additionalContext": "%s"\n  }\n}\n' "$session_context"
+else
+  # Copilot CLI (sets COPILOT_CLI=1) and any other SDK-standard harness.
+  printf '{\n  "additionalContext": "%s"\n}\n' "$session_context"
+fi
+
+exit 0

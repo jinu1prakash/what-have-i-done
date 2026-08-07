@@ -1,0 +1,15 @@
+region,sessions,day
+North,120,mon
+south ,90,mon
+EAST,45,mon
+west,60,mon
+North,110,tue
+South,85,tue
+east,50,tue
+West,,tue
+nort,12,wed
+,7,wed
+north,130,wed
+south,95,wed
+east,40,wed
+west,55,wed

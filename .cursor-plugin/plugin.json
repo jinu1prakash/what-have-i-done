@@ -1,0 +1,21 @@
+{
+  "name": "what-have-i-done",
+  "displayName": "What Have I Done",
+  "description": "Completion-integrity skills: reconstruct what was actually asked, ledger every step against concrete evidence, and review it adversarially before claiming anything is done.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jinu Prakash"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "self-review",
+    "verification",
+    "completion",
+    "evidence",
+    "honesty",
+    "quality-gate"
+  ],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks-cursor.json"
+}

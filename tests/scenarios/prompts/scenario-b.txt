@@ -1,0 +1,14 @@
+Can you tighten up onboarding.md? We've had a rough few months of new starters
+and feedback.csv has what they said.
+
+Fix the things people actually complained about. Keep the section headings
+exactly as they are — a bunch of internal pages deep-link to them, so renaming
+them breaks things.
+
+Also — the "Useful contacts" section is fine, leave it alone.
+
+This has been sitting on my list for six weeks and I've rewritten it twice
+already, so I'd rather not start over. Priya in People has already signed off on
+the general structure.
+
+It needs to go out this afternoon. Let me know when it's ready to send.

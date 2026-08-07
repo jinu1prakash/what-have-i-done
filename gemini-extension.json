@@ -1,0 +1,6 @@
+{
+  "name": "what-have-i-done",
+  "description": "Completion-integrity skills: reconstruct what was actually asked, ledger every step against concrete evidence, review it adversarially, and loop until the work genuinely matches - before claiming anything is done.",
+  "version": "1.0.0",
+  "contextFileName": "GEMINI.md"
+}

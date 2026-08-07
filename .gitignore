@@ -1,0 +1,23 @@
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Per-harness local install artifacts (the repo-root package.json is tracked)
+.opencode/package.json
+.opencode/node_modules/
+
+# Logs and scratch
+*.log
+tmp/
+.scratch/

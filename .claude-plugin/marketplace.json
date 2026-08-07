@@ -1,0 +1,18 @@
+{
+  "name": "what-have-i-done",
+  "description": "Completion-integrity skills: prove finished work is the right work before ever calling it done",
+  "owner": {
+    "name": "Jinu Prakash"
+  },
+  "plugins": [
+    {
+      "name": "what-have-i-done",
+      "description": "Completion-integrity skills: reconstruct what was actually asked, ledger every step against concrete evidence, review it adversarially, and loop until the work genuinely matches - before claiming anything is done",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "Jinu Prakash"
+      }
+    }
+  ]
+}

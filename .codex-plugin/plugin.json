@@ -1,0 +1,36 @@
+{
+  "name": "what-have-i-done",
+  "version": "1.0.0",
+  "description": "Completion-integrity skills: reconstruct what was actually asked, ledger every step against concrete evidence, review it adversarially, and loop until the work genuinely matches - before claiming anything is done.",
+  "author": {
+    "name": "Jinu Prakash"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "self-review",
+    "verification",
+    "completion",
+    "evidence",
+    "honesty",
+    "quality-gate"
+  ],
+  "skills": "./skills/",
+  "hooks": {},
+  "interface": {
+    "displayName": "What Have I Done",
+    "shortDescription": "Evidence-backed self-review before claiming any work done",
+    "longDescription": "Turns 'I think it's done' into 'here is proof it's the right work.' After finishing a task or a to-do list, reconstruct what was actually asked, build an evidence ledger, review each step adversarially, and loop until it holds up. Applies to code, documents, data analysis, research, ops changes, and design work.",
+    "developerName": "Jinu Prakash",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "I just finished the tasks - double-check the work before telling me it's done.",
+      "Review everything you did against what I actually asked for."
+    ]
+  }
+}
